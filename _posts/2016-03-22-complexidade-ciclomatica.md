@@ -99,12 +99,12 @@ Voltando ao grafo mostra na figura, vemos que o mesmo possui 11 nós e 12 aresta
 Uma outra maneira bem simples de descobrir a complexidade ciclomática é contar o número de loops fechados no grafo (que são formados por condicionais e loops) e somar ao número de pontos de saída. No grafo acima, temos 2 loops fechados (os if e while) e um ponto de saída, resultando no mesmo valor 3 para a complexidade da função.
 
 ### Decomposição
-Uma segunda simplificação do cálculo de A - N + 2C reduz o cálculo de inspeção visual
+Uma segunda simplificação do cálculo de **A - N + 2C** reduz o cálculo de inspeção visual
 do grafo de controle. Nós vamos precisar da formula de Euler na qual segue.
 
-> Se G é um grafo plano conexo com N vértices, A arestas e R regiões, então N - A + R = 2.
+> Se G é um grafo plano conexo com N vértices, A arestas e R regiões, então **N - A + R = 2**.
 
-Apenas mudando a ordem dos temos, nós logo temos R = A - N + 2, então **o numero de regiões
+Apenas mudando a ordem dos temos, nós logo temos **R = A - N + 2**, então **o numero de regiões
 ou (faces do grafo) = complexidade ciclomática.
 
 A complexidade permanece a mesma quando a sintaxe de uma linguagem é levada em questão sem alterar a semântica do programa. Tome por exemplo a versão idiomática do algoritmo em Ruby:
