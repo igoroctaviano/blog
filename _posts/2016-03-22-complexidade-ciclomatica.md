@@ -100,7 +100,7 @@ Uma outra maneira bem simples de descobrir a complexidade ciclomática é contar
 
 ### Decomposição
 
-![Grafo](/assets/img/complexidade-ciclomatica/grafo2.png)
+![Grafo](/assets/img/complexidade-ciclomatica/grafo3.png)
 
 Uma segunda simplificação do cálculo de **A - N + 2C** reduz o cálculo de inspeção visual
 do grafo de controle. Nós vamos precisar da formula de Euler na qual:
