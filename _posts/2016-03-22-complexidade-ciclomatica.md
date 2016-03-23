@@ -100,7 +100,7 @@ Uma outra maneira bem simples de descobrir a complexidade ciclomática é contar
 
 ### Decomposição
 Uma segunda simplificação do cálculo de **A - N + 2C** reduz o cálculo de inspeção visual
-do grafo de controle. Nós vamos precisar da formula de Euler na qual segue.
+do grafo de controle. Nós vamos precisar da formula de Euler na qual:
 
 > Se G é um grafo plano conexo com N vértices, A arestas e R regiões, então **N - A + R = 2**.
 
