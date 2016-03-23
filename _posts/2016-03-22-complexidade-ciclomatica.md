@@ -118,15 +118,16 @@ Node que embora o número de nós e arestas tenha mudado, a relação entre eles
 
 De uma forma geral, o valor da complexidade ciclomática define um limite superior para a quantidade de testes necessários para cobrir todos os caminhos decisórios no código em questão. Esse é um limite superior já que nem todos os caminhos são necessariamente realizáveis.
 
-Disso se infere que quanto menor a complexidade, menor a quantidade de testes necessários para o método em questão. Esse fato implica em outro curioso: quebra um método em vários reduz a complexidade dos métodos mas aumenta a complexidade geral do código e, de forma geral, mantém a testabilidade do programa completo no mesmo nível.
+Disso se infere que quanto menor a complexidade, menor a quantidade de testes necessários **para o método em questão**. Esse fato implica em outro curioso: quebra um método em vários reduz a complexidade dos métodos mas aumenta a complexidade geral do código e, de forma geral, mantém a testabilidade do programa completo no mesmo nível.
 
 ### Referências
 
-Obviamente, já que a complexidade é um valor específico, é possível extrair da mesma uma referência. Baseado no trabalho de McCabe, esses valores de referência são:
+* Obviamente, já que a complexidade é um valor específico, é possível extrair da mesma uma referência. Baseado no trabalho de McCabe, esses valores de referência são:
 
-1-10, métodos simples, sem muito risco
-11-20, métodos medianamente complexos, com risco moderado
-21-50, métodos complexos, com risco alto
-51 ou mais, métodos instáveis de altíssimo risco
+- 1-10, métodos simples, sem muito risco
+- 11-20, métodos medianamente complexos, com risco moderado
+- 21-50, métodos complexos, com risco alto
+- 51 ou mais, métodos instáveis de altíssimo risco
 
 ### Conclusão
+Essa foi uma pequena introdução ao assunto com o objetivo de abrir o caminho para artigos posteriores mostrando ferramentas de apoio ao cálculo e monitoramento da complexidade ciclomática. Como de usual, sugestões e correções são bem vindos.
