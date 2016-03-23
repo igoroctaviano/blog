@@ -22,11 +22,12 @@ O que em outras palavras, quanto mais caminhos de código puder tomar (seja por 
 maior a quantidade de testes necessários. Abaixo veremos que há uma relação direta entre a **complexidade ciclomática**
 e a cobertura de um código.
 
-## Calculando a complexidade ciclomática
+### Calculando a complexidade ciclomática
 Um exemplo:
 Supondo que você esteja desenvolvendo um programa que lhe retorne o maior divisor comum entre dois números. Uma fórmula
 simples é o [Algoritmo de Euclides](https://pt.wikipedia.org/wiki/Algoritmo_de_Euclides) que pode ser descrito da seguinte forma:
-| Dados dois números naturais a e b, verifique se b é zero. Se sim, a é o maior divisor comum entre os mesmos; caso contrário, repita o | processo usando b e o resto da divisão de a por b.
+
+> Dados dois números naturais a e b, verifique se b é zero. Se sim, a é o maior divisor comum entre os mesmos; caso contrário, repita o processo usando b e o resto da divisão de a por b.
 
 Esse algoritmo pode ser expresso pelo seguinte programa em Ruby (note que ele não está em Ruby idiomático):
 {% highlight ruby %}
