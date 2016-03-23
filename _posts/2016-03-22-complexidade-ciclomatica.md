@@ -104,8 +104,8 @@ do grafo de controle. Nós vamos precisar da formula de Euler na qual:
 
 > Se G é um grafo plano conexo com N vértices, A arestas e R regiões, então **N - A + R = 2**.
 
-Apenas mudando a ordem dos temos, nós logo temos **R = A - N + 2**, então **o numero de regiões
-ou (faces do grafo) = complexidade ciclomática.
+Apenas mudando a ordem dos termos, logo temos **R = A - N + 2**, então **o numero de regiões
+ou (faces do grafo) = complexidade ciclomática**.
 
 A complexidade permanece a mesma quando a sintaxe de uma linguagem é levada em questão sem alterar a semântica do programa. Tome por exemplo a versão idiomática do algoritmo em Ruby:
 
