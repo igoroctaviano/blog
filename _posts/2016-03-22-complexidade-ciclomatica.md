@@ -66,4 +66,67 @@ Se o programa acima for executado, ele rodará o caso de teste logo abaixo da fu
 
 A função euclid pode ser descrita por um grafo simples que conecta os caminhos entre as várias declarações que a mesma contém. Esse grafo é o mostrado abaixo (clique para expandir):
 
+![Grafo](/assets/img/complexidade-ciclomatica/grafo1.png)
 
+Com base nesse grafo, podemos definir a complexidade ciclomática de um programa da seguinte forma:
+
+{% highlight ruby %}
+CC = A - N + 2C
+{% endhighlight ruby %}
+
++ Nessa fórmula:
+- CC é a complexidade ciclomática
+- A é o número de arestas do grafo
+- N é o número de nós do grafo
+- C é o número de componentes conectados
+- 
+Como se trata de uma função simples com um único ponto de entrada e saída, o número de componentes é 1 e a fórmula pode ser reduzida para:
+
+{% highlight ruby %}
+CC = A - N + 2
+{% endhighlight ruby %}
+
+Se a função possuísse múltiplos pontos de saída, entretanto, a complexidade ciclomática seria definida como:
+
+{% highlight ruby %}
+CC = A - N + C + R
+{% endhighlight ruby %}
+
+Nessa fórmula, R é o número de declarações de saída (em Ruby, o número de returns).
+
+Voltando ao grafo mostra na figura, vemos que o mesmo possui 11 nós e 12 arestas, o que nós dá uma complexidade ciclomática de 12 - 11 + 2, ou seja, 3.
+
+Uma outra maneira bem simples de descobrir a complexidade ciclomática é contar o número de loops fechados no grafo (que são formados por condicionais e loops) e somar ao número de pontos de saída. No grafo acima, temos 2 loops fechados (os if e while) e um ponto de saída, resultando no mesmo valor 3 para a complexidade da função.
+
+Uma coisa interessante é que a complexidade permanece a mesma quando a sintaxe de uma linguagem é levada em questão sem alterar a semântica do programa. Tome por exemplo a versão idiomática do algoritmo em Ruby:
+
+{% highlight ruby %}
+def euclid(m, n)
+  m, n = n, m if n > m
+  m, n = n, m % n while m % n != 0
+  n
+end
+{% endhighlight ruby %}
+
+O grafo gerado nesse caso é (clique para expandir):
+
+![Grafo](/assets/img/complexidade-ciclomatica/grafo2.png)
+
+Node que embora o número de nós e arestas tenha mudado, a relação entre eles não mudou e a complexidade permanece a mesma.
+
+### Testando
+
+De uma forma geral, o valor da complexidade ciclomática define um limite superior para a quantidade de testes necessários para cobrir todos os caminhos decisórios no código em questão. Esse é um limite superior já que nem todos os caminhos são necessariamente realizáveis.
+
+Disso se infere que quanto menor a complexidade, menor a quantidade de testes necessários para o método em questão. Esse fato implica em outro curioso: quebra um método em vários reduz a complexidade dos métodos mas aumenta a complexidade geral do código e, de forma geral, mantém a testabilidade do programa completo no mesmo nível.
+
+### Referências
+
+Obviamente, já que a complexidade é um valor específico, é possível extrair da mesma uma referência. Baseado no trabalho de McCabe, esses valores de referência são:
+
+1-10, métodos simples, sem muito risco
+11-20, métodos medianamente complexos, com risco moderado
+21-50, métodos complexos, com risco alto
+51 ou mais, métodos instáveis de altíssimo risco
+
+### Conclusão
