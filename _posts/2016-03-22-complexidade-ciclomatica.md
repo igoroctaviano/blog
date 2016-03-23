@@ -94,11 +94,14 @@ CC = A - N + C + R
 
 Nessa fórmula, R é o número de declarações de saída (em Ruby, o número de returns).
 
-Voltando ao grafo mostra na figura, vemos que o mesmo possui 11 nós e 12 arestas, o que nós dá uma complexidade ciclomática de 12 - 11 + 2, ou seja, 3.
+Voltando ao grafo mostra na figura, vemos que o mesmo possui 11 nós e 12 arestas, o que nós dá uma complexidade ciclomática de **12 - 11 + 2**, ou seja, **3**.
 
-Uma outra maneira bem simples de descobrir a complexidade ciclomática é contar o número de loops fechados no grafo (que são formados por condicionais e loops) e somar ao número de pontos de saída. No grafo acima, temos 2 loops fechados (os if e while) e um ponto de saída, resultando no mesmo valor 3 para a complexidade da função.
+Uma outra maneira bem simples de descobrir a complexidade ciclomática é contar o número de loops fechados no grafo (que são formados por condicionais e loops) e somar ao número de pontos de saída. No grafo acima, temos 2 loops fechados (os if e while) e um ponto de saída, resultando no mesmo valor **3** para a complexidade da função.
 
 ### Decomposição
+
+![Grafo](/assets/img/complexidade-ciclomatica/grafo2.png)
+
 Uma segunda simplificação do cálculo de **A - N + 2C** reduz o cálculo de inspeção visual
 do grafo de controle. Nós vamos precisar da formula de Euler na qual:
 
@@ -106,6 +109,8 @@ do grafo de controle. Nós vamos precisar da formula de Euler na qual:
 
 Apenas mudando a ordem dos termos, logo temos **R = A - N + 2**, então **o numero de regiões
 ou (faces do grafo) = complexidade ciclomática**.
+
+***
 
 A complexidade permanece a mesma quando a sintaxe de uma linguagem é levada em questão sem alterar a semântica do programa. Tome por exemplo a versão idiomática do algoritmo em Ruby:
 
