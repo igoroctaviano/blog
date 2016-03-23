@@ -61,3 +61,9 @@ class EuclidTest < Test::Unit::TestCase
   
 end
 {% endhighlight ruby %}
+
+Se o programa acima for executado, ele rodará o caso de teste logo abaixo da função que verificará se a mesma está correta. Você pode adicionar mais casos ao conjunto SETS se desejar.
+
+A função euclid pode ser descrita por um grafo simples que conecta os caminhos entre as várias declarações que a mesma contém. Esse grafo é o mostrado abaixo (clique para expandir):
+
+
