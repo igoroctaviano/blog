@@ -74,12 +74,12 @@ Com base nesse grafo, podemos definir a complexidade ciclomática de um programa
 CC = A - N + 2C
 {% endhighlight ruby %}
 
-+ Nessa fórmula:
+Nessa fórmula:
 - CC é a complexidade ciclomática
 - A é o número de arestas do grafo
 - N é o número de nós do grafo
 - C é o número de componentes conectados
-- 
+ 
 Como se trata de uma função simples com um único ponto de entrada e saída, o número de componentes é 1 e a fórmula pode ser reduzida para:
 
 {% highlight ruby %}
@@ -122,7 +122,7 @@ Disso se infere que quanto menor a complexidade, menor a quantidade de testes ne
 
 ### Referências
 
-* Obviamente, já que a complexidade é um valor específico, é possível extrair da mesma uma referência. Baseado no trabalho de McCabe, esses valores de referência são:
+Obviamente, já que a complexidade é um valor específico, é possível extrair da mesma uma referência. Baseado no trabalho de McCabe, esses valores de referência são:
 
 - 1-10, métodos simples, sem muito risco
 - 11-20, métodos medianamente complexos, com risco moderado
