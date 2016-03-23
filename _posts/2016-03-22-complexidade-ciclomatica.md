@@ -66,7 +66,9 @@ Se o programa acima for executado, ele rodará o caso de teste logo abaixo da fu
 
 A função euclid pode ser descrita por um grafo simples que conecta os caminhos entre as várias declarações que a mesma contém. Esse grafo é o mostrado abaixo (clique para expandir):
 
+{% highlight ruby %}
 ![Grafo](/assets/img/complexidade-ciclomatica/grafo1.png)
+{% endhighlight ruby %}
 
 Com base nesse grafo, podemos definir a complexidade ciclomática de um programa da seguinte forma:
 
@@ -110,7 +112,9 @@ end
 
 O grafo gerado nesse caso é (clique para expandir):
 
+{% highlight ruby %}
 ![Grafo](/assets/img/complexidade-ciclomatica/grafo2.png)
+{% endhighlight ruby %}
 
 Node que embora o número de nós e arestas tenha mudado, a relação entre eles não mudou e a complexidade permanece a mesma.
 
