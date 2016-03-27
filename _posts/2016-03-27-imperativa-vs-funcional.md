@@ -56,6 +56,9 @@ de memória com os números 2 a N e armazenar o resultado no mesmo lugar, e no f
 
 ***
 [K&R](https://pt.wikipedia.org/wiki/The_C_Programming_Language)
-[Wizard Book n. Hal Abelson's, Jerry Sussman's and Julie Sussman's Structure and Interpretation of Computer Programs (MIT Press, 1984; ISBN 0-262-01077-1), an excellent computer science text used in introductory courses at MIT. So called because of the wizard on the jacket. One of the bibles of the LISP/Scheme world. Also, less commonly, known as the Purple Book.](https://mitpress.mit.edu/sicp/)
-[[StackOverflow] What is functional declarative and imperative programming language](http://stackoverflow.com/questions/602444/what-is-functional-declarative-and-imperative-programming)
-[[YouTube] Robert C Martin - Functional Programming; What? Why? When?](https://www.youtube.com/watch?v=7Zlp9rKHGD4)
+
+[Wizard Book - SICP](https://mitpress.mit.edu/sicp/)
+
+[What is functional declarative and imperative programming language](http://stackoverflow.com/questions/602444/what-is-functional-declarative-and-imperative-programming)
+
+[Robert C Martin - Functional Programming; What? Why? When?](https://www.youtube.com/watch?v=7Zlp9rKHGD4)
