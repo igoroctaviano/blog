@@ -55,10 +55,9 @@ Para calcular o fatorial de n, reservar uma região de memória e armazenar 1 l�
 de memória com os números 2 a N e armazenar o resultado no mesmo lugar, e no final, a região da memória conterá o fatorial.
 
 ***
-[K&R](https://pt.wikipedia.org/wiki/The_C_Programming_Language)
+<sub>*Pois é, conteúdo é o que não falta, então segue*</sub>
 
-[Wizard Book - SICP](https://mitpress.mit.edu/sicp/)
-
-[What is functional declarative and imperative programming language](http://stackoverflow.com/questions/602444/what-is-functional-declarative-and-imperative-programming)
-
-[Robert C Martin - Functional Programming; What? Why? When?](https://www.youtube.com/watch?v=7Zlp9rKHGD4)
+- [K&R](https://pt.wikipedia.org/wiki/The_C_Programming_Language)
+- [Wizard Book - SICP](https://mitpress.mit.edu/sicp/)
+- [What is functional declarative and imperative programming language](http://stackoverflow.com/questions/602444/what-is-functional-declarative-and-imperative-programming)
+- [Robert C Martin - Functional Programming; What? Why? When?](https://www.youtube.com/watch?v=7Zlp9rKHGD4)
