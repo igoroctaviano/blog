@@ -4,8 +4,8 @@ title: "Programação Imperativa vs Funcional"
 date: 2016-03-27 15:51:00
 image: ''
 description: 'Paradigmas de Programação: Imperativa ou Funcional?'
-main-class: '' 
-color: ''
+main-class: 'linguagens' 
+color: '#d6ba32'
 tags: concepts
 categories:
 introduction: "Paradigmas de Programação: Imperativa ou Funcional?"
