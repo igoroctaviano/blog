@@ -55,7 +55,7 @@ Para calcular o fatorial de n, reservar uma região de memória e armazenar 1 l�
 de memória com os números 2 a N e armazenar o resultado no mesmo lugar, e no final, a região da memória conterá o fatorial.
 
 ***
-<sub>*Pois é, conteúdo é o que não falta, então segue*</sub>
+*Pois é, conteúdo é o que não falta, então segue*
 
 - [K&R](https://pt.wikipedia.org/wiki/The_C_Programming_Language)
 - [Wizard Book - SICP](https://mitpress.mit.edu/sicp/)
