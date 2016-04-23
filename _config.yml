@@ -1,11 +1,13 @@
 # Site settings
-title: Igor Octaviano | Blog
+title: Igor Octaviano
 email: igoroctaviano@gmail.com
+twitter: https://twitter.com/IgorOctaviano
 description: > # this means to ignore newlines until "baseurl:"
   Um blog sobre desenvolvimento e tecnologias.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://igoroctaviano.github.io" # the base hostname & protocol for your site
-github_username:  igoroctaviano
+github_username: igoroctaviano
+twitter_username: igoroctaviano
 
 # Build settings
 markdown: kramdown
