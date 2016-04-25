@@ -17,7 +17,7 @@ introduction: "Sistemas Operacionais: resolução de exercícios pra quem está 
 <sub>*Dedico esse post a todos os alunos da disciplina de SO e a mim :D, numa forma de fixar o conteúdo.*</sub>
 
 ### GERÊNCIA MEMÓRIA E MEMÓRIA VIRTUAL
-### Ex 1: (PROVA 3 SO SI-M/JOGOS de 2007 a 2013 e PAC 2011 a 2013)
+**Ex 1: (PROVA 3 SO SI-M/JOGOS de 2007 a 2013 e PAC 2011 a 2013)**
 Considerando um espaço de endereçamento virtual de **512 MiB** e uma 
 memória física **8 MiB** e utilizando-se páginas de **2 Kbytes**.
 
