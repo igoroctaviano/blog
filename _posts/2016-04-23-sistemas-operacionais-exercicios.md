@@ -90,7 +90,6 @@ Recomendo a leitura dos livros do [Tanenbaum](https://pt.wikipedia.org/wiki/Andr
 
 [Sistemas Operacionais Modernos – 26 nov 2009 por Andrew S. Tanenbaum](https://www.amazon.com.br/gp/product/8576052377/ref=s9_acsd_simh_se_c_x_2?pf_rd_m=A1ZZFT5FULY4LN&pf_rd_s=search-desktop-advertising-no-results-center-1&pf_rd_r=M1PHC98PBWX53VCQ1KF3&pf_rd_t=301&pf_rd_p=1962514502&pf_rd_i=operating%20systems%20tanenbum)
 
-Achou o assunto interessante? tem tem um livro legal do Silberschatz em Java [aqui.](https://www.amazon.com.br/Sistemas-Operacionais-Java-Greg-Gagne/dp/8535224068)
-e caso você tiver sem tempo pra estudar e quer uma boa introdução no assunto, vai com o conhecido¹ "Livro dos Dinossauros" [aqui.](https://www.amazon.com.br/Fundamentos-Sistemas-Operacionais-Princ%C3%ADpios-B%C3%A1sicos/dp/8521622058/ref=sr_1_4?s=books&ie=UTF8&qid=1461595743&sr=1-4)
+Achou o assunto interessante? tem tem um livro legal do Silberschatz em Java [aqui](https://www.amazon.com.br/Sistemas-Operacionais-Java-Greg-Gagne/dp/8535224068), e caso.. você tiver sem tempo pra estudar e quer uma boa introdução no assunto, vai com o conhecido¹ "Livro dos Dinossauros" [aqui.](https://www.amazon.com.br/Fundamentos-Sistemas-Operacionais-Princ%C3%ADpios-B%C3%A1sicos/dp/8521622058/ref=sr_1_4?s=books&ie=UTF8&qid=1461595743&sr=1-4)
 
 <sub>1. por mim</sub>
