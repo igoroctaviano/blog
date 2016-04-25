@@ -2,20 +2,22 @@
 layout: post
 title: "Sistemas Operacionais"
 date: 2016-04-23 11:28:00
-image: '/assets/img/sistemas-operacionais-enade/main.png'
-description: 'Sistemas Operacionais: saiba como resolver alguns exercícios do ENADE!'
+image: '/assets/img/sistemas-operacionais-exercicios/main.png'
+description: 'Sistemas Operacionais: resolução de exercícios pra quem está enfrentando a disciplina!'
 main-class: 'saiba'
 color: '#3369e8'
-tags: enade sistemas-operacionais
+tags: exercicios sistemas-operacionais
 categories:
-introduction: "Sistemas Operacionais: saiba como resolver alguns exercícios do ENADE!"
+introduction: "Sistemas Operacionais: resolução de exercícios pra quem está enfrentando a disciplina!"
 ---
 
 ## Sistemas Operacionais
-aoskesaopke
+> Programa ou um conjunto de programas cuja função é gerenciar os recursos do sistema (definir qual programa recebe atenção do processador, gerenciar memória, criar um sistema de arquivos, etc.), fornecendo uma interface entre o computador e o usuário.
+
+<sub>*Dedico esse post a todos os alunos da disciplina de SO e a mim :D, numa forma de fixar o conteúdo.*</sub>
 
 ### GERÊNCIA MEMÓRIA E MEMÓRIA VIRTUAL
-#### Ex 1: (PROVA 3 SO SI-M/JOGOS de 2007 a 2013 e PAC 2011 a 2013)
+### Ex 1: (PROVA 3 SO SI-M/JOGOS de 2007 a 2013 e PAC 2011 a 2013)
 Considerando um espaço de endereçamento virtual de **512 MiB** e uma 
 memória física **8 MiB** e utilizando-se páginas de **2 Kbytes**.
 
@@ -84,3 +86,11 @@ para os endereços lógicos e físicos (ou MV e MF):
     O endereço físico da pagina virtual é Ox2800.
   
 ***
+<sub>Recomendo a leitura dos livros do [Tanenbaum]{https://pt.wikipedia.org/wiki/Andrew_Stuart_Tanenbaum}, ele é o autor do [MINIX]{https://pt.wikipedia.org/wiki/MINIX}, um sistema operacional baseado no Unix com propósito educacional, e é bastante conhecido por seus livros sobre ciência da computação. *O cara é professor de muitos, fato*.</sub>
+
+<sub>![Sistemas Operacionais Modernos – 26 nov 2009 por Andrew S. Tanenbaum]{https://www.amazon.com.br/gp/product/8576052377/ref=s9_acsd_simh_se_c_x_2?pf_rd_m=A1ZZFT5FULY4LN&pf_rd_s=search-desktop-advertising-no-results-center-1&pf_rd_r=M1PHC98PBWX53VCQ1KF3&pf_rd_t=301&pf_rd_p=1962514502&pf_rd_i=operating%20systems%20tanenbum}</sub>
+
+Achou o assunto interessante? tem tem um livro legal do Silberschatz em Java [aqui.]{https://www.amazon.com.br/Sistemas-Operacionais-Java-Greg-Gagne/dp/8535224068}
+e caso você tiver sem tempo pra estudar e quer uma boa introdução no assunto, vai com o conhecido¹ "Livro dos Dinossauros" [aqui.]{https://www.amazon.com.br/Fundamentos-Sistemas-Operacionais-Princ%C3%ADpios-B%C3%A1sicos/dp/8521622058/ref=sr_1_4?s=books&ie=UTF8&qid=1461595743&sr=1-4}
+
+<sub>1. por mim</sub>
