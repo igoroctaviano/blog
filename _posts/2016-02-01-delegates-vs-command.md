@@ -44,7 +44,7 @@ public static double Divide(double a, double b)
 Não há nada de especial nisso. Agora para criar uma instância do delegate *Operation*.
 
 {% highlight csharp %}
-Operation math = new Operation(Add)
+Operation math = new Operation(Add);
 {% endhighlight %}
 
 Novamente a sintaxe pode lhe deixar um pouco confuso. A linha representada, inicia uma instância de *Operation*
@@ -112,7 +112,7 @@ public class Add : Operation
 public class Subtract: Operation
 {
    public double Run(double a, double b)
-    {
+   {
        return a - b;
    }
 }
@@ -182,15 +182,15 @@ a situação fica sob controle.
 {% highlight csharp %}
 public class Composite : Operation
 {
-      IList operations = new ArrayList();
+     IList operations = new ArrayList();
   
-      public double Run(double a, double b)
-      {
-          double result = 0;
-          foreach(Operation o in operations)
-              result = o.Run(a, b);
+     public double Run(double a, double b)
+     {
+        double result = 0;
+        foreach(Operation o in operations)
+            result = o.Run(a, b);
  
-          return result;
+        return result;
      }
  
      public void AddOperation(Operation o)
@@ -227,10 +227,10 @@ public event System.EventHandler Click;
 Toda a construção do *Event* é um pouco boba, porque, tanto quanto posso dizer, poderia ser facilmente substituida
 com um campo (ou propriedade) pública. 1 ponto a menos aos delegates por flagrante mal uso de sintaxe.
 
-Pontuação final delegates: -1; Command Pattern: 2
+Pontuação final? delegates: -1; Command Pattern: 2
 
 * * *
-Esse post é de autoria de **[Micah Martin](https://twitter.com/slagyr)** que é o cofundador da [8th Light](https://8thlight.com/) e é conhecido pelo seu trabalho na área de open source como [FitNesse](https://github.com/unclebob/fitnesse), [Limelight](https://blog.8thlight.com/micah-martin/2013/07/19/limelight-lives-clojure-tool-chain.html), [Joodo](https://github.com/slagyr/joodo) e [Speclj](https://github.com/slagyr/speclj). E de curiosidade, ele é filho do Robert Martin (conhecido como **[Uncle Bob](https://twitter.com/unclebobmartin)**) que é autor de vários livros conhecidos dos desenvolvedores, que altamente recomendo a todos que não deixem de dar uma boa olhada! Para mais informações, acesse [aqui](https://sites.google.com/site/unclebobconsultingllc/books).
+Esse post é de autoria de **[Micah Martin](https://twitter.com/slagyr)** que é o cofundador da [8th Light](https://8thlight.com/) e é conhecido pelo seu trabalho na área de open source como [FitNesse](https://github.com/unclebob/fitnesse), [Limelight](https://blog.8thlight.com/micah-martin/2013/07/19/limelight-lives-clojure-tool-chain.html), [Joodo](https://github.com/slagyr/joodo) e [Speclj](https://github.com/slagyr/speclj). E de curiosidade, Micah é filho do Robert Martin (conhecido como **[Uncle Bob](https://twitter.com/unclebobmartin)**), autor de vários livros conhecidos aos desenvolvedores (comece procurando por Clean Code), altamente recomendo a todos que não deixem de dar uma boa olhada nesses livros! Para mais informações, acesse [aqui](https://sites.google.com/site/unclebobconsultingllc/books).
 
-Você também pode acessar a publicação original feita por Micah no blog do 8th Light acessando [aqui](https://blog.8thlight.com/micah-martin/2006/09/07/delegates-vs-command-pattern.html).
+Você também pode acessar a publicação original feita por Micah no blog do 8th Light por [aqui](https://blog.8thlight.com/micah-martin/2006/09/07/delegates-vs-command-pattern.html).
 
