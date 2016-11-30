@@ -4,8 +4,8 @@ title: "KDD vs SEMMA"
 date: 2016-08-28 00:11:00
 image: '/assets/img/kdd-vs-semma/main.png'
 description: ''
-main-class: ''
-color: '#EB7728'
+main-class: 'saiba'
+color: '#3369e8'
 tags: patterns
 categories:
 introduction: ""
