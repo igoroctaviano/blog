@@ -1,0 +1,152 @@
+---
+layout: post
+title: "Dias e Armadilhas em C#"
+date: 2016-02-01 00:11:00
+image: '/assets/img/dicas-e-armadilhas-em-c#d/main.png'
+description: ''
+main-class: 'c#'
+color: 'Blue'
+tags: c#
+categories:
+introduction: ""
+---
+
+Tipos parciais nos permite dividir a definição de um tipo entre vários arquivos. Por exemplo: uma classe pode
+ser especificada em mais de um arquivo *.cs*. 
+
+Neste exemplo estou criando uma nova instância de um tipo parcial e estou chamando os métodos *AlgumMetodo* e *AlgumOutroMetodo*.
+Nada diferente até então..
+
+{% highlight c# %}
+public class TiposParciaisEMetodos
+{
+    public void Examplo()
+    {
+        var a = new UmTipoParcial();
+
+        a.AlgumMetodo();
+        a.AlgumOutroMetodo();
+    }
+}
+{% endhighlight %}
+
+Agora se olharmos para a definição de *UmTipoParcial*. Podemos ver que nós apenas temos o método *AlgumOutroMetodo* definido.
+
+{% highlight c# %}
+// Arquivo: UmTipoParcial.cs
+partial class UmTipoParcial 
+{
+    public void AlgumOutroMetodo() { }
+
+    partial void UmMetodoParcial()
+    {
+        // ...
+    }
+}
+{% endhighlight %}
+
+O método *AlgumMetodo* não está em lugar algum. (Vamos voltar a falar sobre esse método *UmMetodoParcial* em breve..)
+
+{% highlight c# %}
+// Arquivo: TiposParciaisEMetodos.cs
+public class TiposParciaisEMetodos
+{
+    public void Exemplo()
+    {
+        var a = new UmTipoParcial();
+
+        a.AlgumMetodo();
+        a.AlgumOutroMetodo();
+    }
+}
+{% endhighlight %}
+
+Então fica a pergunta, a onde está esta definido esse método *AlgumMetodo*? 
+Bom, neste exemplo, ela foi divido em outo arquivo, chamado *UmTipoParcial.generated.cs*.
+Não estamos utilizando herança aqui, é simplesmente uma maneira de dividir a definição em multiplos arquivos.
+
+{% highlight c# %}
+// Arquivo: UmTipoParcial.generated.cs
+partial class UmTipoParcial
+{
+    public void AlgumMetodo()
+    {
+        UmMetodoParcial();
+    }
+    
+    partial void UmMetodoParcial();
+}
+{% endhighlight %}
+
+Classes parcials trazem benefício quando estamos trabalhando com código gerado. O código gerado, pode fazer a classe parcial,
+o que nos permite criar um arquivo *.cs* irmão e adicionar novos métodos. Desta forma, se o código gerado originalmente
+for regenerado, não vamos perder os métodos adicionais nos adicionamos. Sendo que a parte daquela classe que foi dividida em que 
+escrevemos o código na mão vai permanecer intacta.
+
+Para dizermos que uma classe é do tipo parcial, a palavra-chave *partial*:
+{% highlight c# %}
+partial class NomeDaClasse  // Você pode aplicar partial em todas as partes que devem ser irmãs (tanto na parte gerada quando não)
+{
+  //...
+}
+{% endhighlight %}
+
+Quando estamos tralhando com classes parcials, também podemos trabalhar com métodos parciais.
+Podemos ver que em nosso arquivo gerado *UmTipoParcial.generated.cs* há um método parcial chamado *UmMetodoParcial*:
+
+{% highlight c# %}
+// Arquivo: UmTipoParcial.generated.cs
+partial class UmTipoParcial
+{
+    public void AlgumMetodo()
+    {
+        UmMetodoParcial();
+    }
+    
+    partial void UmMetodoParcial();
+}
+{% endhighlight %}
+
+Métodos parcials devem retornar void e eles são implicitamente privados no escopo. Neste exemplo, é declarado
+um método que é parcial, mas... repare que não há corpo neste método. Isso significa que o corpo deste método
+pode ser fornecido em outro arquivo. Se voltarmos para o código em que escrevemos a mão:
+
+{% highlight c# %}
+// Arquivo: UmTipoParcial.cs
+partial class UmTipoParcial 
+{
+    public void AlgumOutroMetodo() { }
+
+    partial void UmMetodoParcial()
+    {
+        // ...
+    }
+}
+{% endhighlight %}
+
+Podemos ver que aqui nos fornecemos um copo ao método parcial *UmMetodoParcial*.
+E voltando novamente para o nosso código gerado (parcial):
+
+{% highlight c# %}
+// Arquivo: UmTipoParcial.generated.cs
+partial class UmTipoParcial
+{
+    public void AlgumMetodo()
+    {
+        UmMetodoParcial();
+    }
+    
+    partial void UmMetodoParcial();
+}
+{% endhighlight %}
+
+Estamos chamando o método parcial dentro do método *AlgumMetodo*, e quando essa chamada é feita,
+lembra do corpo que implementamos a mão na nossa classe parcial não gerada? então, aquele corpo será executado.
+
+Métodos parcials permitem os código gerados a prover maneiras da parte feita a mão, se enganchar nesses métodos.
+Se comentarmos o corpo que fizemos para o método da classe gerada anteriomente, não irá causar nenhum erro, simplesmente
+será chamado um método sem corpo, então nada vai acontecer... Quando não definimos a implementação para o método,
+o compilador efetivamente compila pra fora (remove) a declaração do método e onde ele foi chamado, por isso não
+recebemos nenhum tipo de erro quando executamos o código.
+
+Então, resumindo, tipos parciais são uma maneira de dividir a definição de um tipo em entre vários arquivos.
