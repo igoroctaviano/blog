@@ -258,6 +258,7 @@ o valor que vai ser convertido e o tipo que queremos que essa entrada seja conve
 No exemplo abaixo declarei algumas variáveis.. O valor inicial é atributo o valor *"99"* em formato *string*.
 Para primeira conversão, quero o tipo alvo *int*. Então, chamei o método *ChangeType* passando o valor inicial
 juntamente com o tipo alvo em que quero converter (*int*).
+
 {% highlight c# %}
 public class ConversoesRuntime
 {
@@ -285,3 +286,78 @@ public class ConversoesRuntime
 Se debugarmos esse método, o valor vai ser convertido para o tipo inteiro, passando de *"99"* *string*
 para *99* *int*. Se continuarmos a execução, quando a variável *tipoAlvo* for atributida para o tipo *double*
 o mesmo vai acontecer, agora do tipo *int* para o tipo *double*, ou seja, *99* para *99.0*.
+
+## Expondo tipos e membros internos (*internal*) para assemblies
+
+Em cenários mais avançados, há momentos em que precisamos fazer com que alguns membros internos (*internal*) que são protegidos, estejam disponíveis para outras assemblies, embora seja uma técnica avançada, ela pode ser útil em alguns casos.
+
+Vejamos o examplo:
+
+{% highlight c# %}
+public class ExemplosInternos
+{
+    public void Exemplo()
+    {
+        var p = new PessoaComCoisasInternas();
+        
+        p.Ola();
+        p.Mundo();
+        
+        var pi = new PessoaInterna();
+    }
+}
+
+public class PessoaComCoisasInternas
+{
+    public void Ola()
+    {
+        // ...
+    }
+    
+    internal void Mundo()
+    {
+        // ...
+    }
+}
+
+internal class PessoaInterna
+{
+    public void Adeus()
+    {
+        // ...
+    }
+}
+
+{% endhighlight %}
+
+Se você tentar rodar esse exemplo, vai perceber erros de compilação dizendo que não há definição do método *Mundo* e nenhum método de extensão *Mundo* para a classe *PessoaComCoisasInternas*... ou seja, não podemos acessar o método *Mundo* e também não podemos criar uma instância de uma *PessoaInterna*. Se você observar, vai ver que na classe PessoaComCoisasInternas há o método público *Ola* e o método *Mundo* está definido como *internal*. Mais abaixo, a classe interna *PessoaInterna*, temos o método público *Adeus*.
+
+Se quisermos que o método interno *Mundo* e também a classe *PessoaInterna* sejam acessados fora da assembly atual, nos podemos
+usar o atributo de visibilidade para os expor à determinadas assemblies. Mas como?
+
+Bom, no projeto C# (quando gerado pelo Visual Studio) você tem um arquivo chamado *AssemblyInfo.cs* e dentro dele
+você tem o atributo de visibilidade:
+
+{% highlight c# %}
+// Arquivo: AssemblyInfo.cs
+
+// ...
+
+[assembly: InternalsVisibleTo("Demos")]
+// [assembly: InternalsVisibleTo("Demos, PublicKey=xxxx")]
+
+// ...
+{% endhighlight %}
+
+No atributo, você coloca como primeiro parâmetro o projeto em que você quer compartilhar acesso de membros internos,
+se você executar o exemplo anterior (considerando que os membros que são internos estejam em assemblies diferentes, neste caso seria um projeto chamado Demos querendo acessar o projeto proprietário do arquivo AssemblyInfo.cs) novamente com esse atributo já definido, você não vai receber erros como acontecia anteriormente. 
+
+Caso a assembly seja de nome forte <sub> Um assembly com nome forte é gerado usando a chave particular que corresponde à chave pública distribuída com a montagem e a própria montagem. O assembly inclui o manifesto do assembly, que contém os nomes e hashes de todos os arquivos que compõem o assembly.</sub> você vai precisar de um atributo overload *[assembly: InternalsVisibleTo("Demos, PublicKey=xxxx")]*, que estava comentado no exemplo anterior, onde agora temos mais um parâmetro que é a chave pública.
+
+O atributo de visibilidade interna pode ser usado em vários cenários, como por exemplo, quando queremos expor coisas internas para podermos testa-las.
+
+
+
+
+
+
