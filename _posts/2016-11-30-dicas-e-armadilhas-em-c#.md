@@ -10,7 +10,7 @@ tags: c#
 categories:
 introduction: ""
 ---
-
+ 
 Tipos parciais nos permite dividir a definição de um tipo entre vários arquivos. Por exemplo: uma classe pode
 ser especificada em mais de um arquivo *.cs*. 
 
