@@ -281,7 +281,7 @@ public class ConversoesRuntime
         tipoConvertido = valorConvertido.GetType();
     }
 }
-{% end highlight %}
+{% endhighlight %}
 
 Se debugarmos esse método, o valor vai ser convertido para o tipo inteiro, passando de *"99"* *string*
 para *99* *int*. Se continuarmos a execução, quando a variável *tipoAlvo* for atributida para o tipo *double*
