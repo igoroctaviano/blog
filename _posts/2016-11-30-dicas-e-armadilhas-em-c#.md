@@ -4,7 +4,7 @@ title: "Dias e Armadilhas em C#"
 date: 2016-02-01 00:11:00
 image: '/assets/img/dicas-e-armadilhas-em-c#d/main.png'
 description: ''
-main-class: 'c#'
+main-class: 'dev'
 color: '#0000FF'
 tags: c#
 categories:
