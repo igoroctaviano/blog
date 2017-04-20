@@ -29,10 +29,10 @@ a.slideButton, .dosearch
     border-radius rem(3px)
     width rem(40px)
     height rem(40px)
-    fill main
+    fill sec
 .icon-search
-    width rem(35px)
-    height rem(35px)
+    width rem(30px)
+    height rem(30px)
 
 .overlay
     cursor pointer
@@ -48,19 +48,20 @@ aside
     padding rem(40px) 0 0
     top 0
     right rem(-240px)
-    background-color main
+    background-color mainGreen
     z-index 20
     box-shadow inset -10px -1px 15px -9px rgba(0,0,0,0.5)
     h2
         text-align center
         margin 0 0 rem(10px)
         mainFont(800)
-        font-size rem(20px)
+        font-size rem(25px)
         color sec
     nav
         ul
             padding 0
         li
+            font-size rem(25px)
             margin 0
             list-style-type none
             a
@@ -70,12 +71,9 @@ aside
                 text-decoration none
                 mainFont(300)
                 color sec
-                border-top 1px solid sec
                 &:hover
                     color main
                     background sec
-        .feed
-            border-bottom 1px solid sec
     &.slide
         right 0
 
