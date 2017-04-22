@@ -44,6 +44,15 @@ gulp.task('browser-sync', ['jekyll-build'], function() {
 });
 
 /**
+ * Fonts task
+ */
+gulp.task('fonts', function(){
+  gulp.src('src/fonts/kievit-regular.woff')
+  .pipe(gulp.dest('_site/assets/fonts/'));
+});
+
+
+/**
  * Stylus task
  */
 gulp.task('stylus', function(){
@@ -93,4 +102,4 @@ gulp.task('watch', function () {
  * Default task, running just `gulp` will compile the stylus,
  * compile the jekyll site, launch BrowserSync & watch files.
  */
-gulp.task('default', ['js', 'stylus', 'browser-sync', 'watch']);
+gulp.task('default', ['js', 'stylus', 'browser-sync', 'watch', 'fonts']);
