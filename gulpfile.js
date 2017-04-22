@@ -1,4 +1,4 @@
-var env         = require('minimist')(process.argv.slice(2)),
+var env       = require('minimist')(process.argv.slice(2)),
 	gulp        = require('gulp'),
 	plumber     = require('gulp-plumber'),
 	browserSync = require('browser-sync'),
@@ -46,16 +46,17 @@ gulp.task('browser-sync', ['jekyll-build'], function() {
 /**
  * Fonts task
  */
-gulp.task('fonts', function(){
+gulp.task('fonts', function() {
   gulp.src('src/fonts/kievit-regular.woff')
-  .pipe(gulp.dest('_site/assets/fonts/'));
+  .pipe(gulp.dest('_site/assets/fonts/'))
+  .pipe(gulp.dest('assets/fonts'));;
 });
 
 
 /**
  * Stylus task
  */
-gulp.task('stylus', function(){
+gulp.task('stylus', function() {
 		gulp.src('src/styl/main.styl')
 		.pipe(plumber())
 		.pipe(stylus({
@@ -70,7 +71,7 @@ gulp.task('stylus', function(){
 /**
  * Javascript Task
  */
-gulp.task('js', function(){
+gulp.task('js', function() {
 	return gulp.src((env.p) ? 'src/js/**/*.js' : ['src/js/**/*.js', '!src/js/analytics.js'])
 		.pipe(plumber())
 		.pipe(concat('main.js'))
