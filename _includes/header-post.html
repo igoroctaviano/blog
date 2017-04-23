@@ -7,7 +7,7 @@
 {% include menu-search.html %}
 
 <header class="header-post" role="banner">
-     <div class="content">
+    <div class="content">
         {% if page.date %}
             <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}" class="date">{{ page.date | date_to_string }}</time>
         {% endif %}
