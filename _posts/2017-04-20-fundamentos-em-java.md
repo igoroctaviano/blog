@@ -37,8 +37,7 @@ JRE e JDK são dois termos que as pessoas se referem com frequência no mundo Ja
 são duas partes que precisamos para rodar e criar aplicações Java. JRE (Java Runtime Environment)
 é o ambiente de execução Java enquanto JDK (Java Development Kit) é o kit de desenvolvimento Java.
 
-
-<<<Adicionar imagem>>>
+<!-- Adicionar imagem -->
 
 **Java Runtime Environment (JRE)**
 [x] Necessário para executar aplicações Java
@@ -57,9 +56,7 @@ Como podemos, partindo daquele código fonte que digitamos, chegar em algo que p
 executado em outro computador? Isso é onde o Kit de Desenvolvimento Java (JDK) vem para nos
 ajudar. Usando a JDK, nós inferimos o código e então, a JDK vai produzir nossa aplicação Java.
 
-
-<<<Adicionar imagem>>>
-
+<!-- Adicionar imagem -->
 
 Mas Java não é uma linguagem de baixo nível igual C. Na linguagem C, quando compilamos algum programa,
 é produzido uma aplicação que pode ser executada diretamente no computador hospedeiro, diferentemente
@@ -69,6 +66,80 @@ executar em ambientes diferentes, e é ai que entra o Ambiente de Execução Jav
 o que precisamos para executar em qualquer ambiente hospedeiro (por isso que usuários finais instalam
 o JRE, porque eles apenas precisam executar aquela aplicação enquanto os desenvolvedores precisam da JDK
 para produzir aquela aplicação).
+
+## Pacotes
+Pacotes é um conceito bem importante em Java, vamos cobrir algumas coisas básicas porém importântes sobre pacotes.
+
+Se você observar alguns códigos Java por ai, vai ver que no topo do arquivo do código fonte, tem a palavra *package*
+declarada com algum nome em seguida. E o que isso faz, quando adicionamos o conceito de pacotes?
+
+{% highlight java %}
+package com.fundamentosemjava.exemplo;
+
+public class Main {
+  public static void main(Strings[] args) {
+
+  }
+}
+{% endhighlight %}
+
+Isso nos provê de organização dentro de uma aplicação Java. Existem muitos aspectos em torno desse conceito
+mais vamos cobrir só o basico para entendermos melhor. Uma coisa é que esses pacotes seguem uma convenção
+em sua nomenclatura e de fato afeta nossa estrutura de código fonte.
+
+Em torno da convenção de como um pacote deve ser nomeado, uma regra simples é tudo minusculo, com nome de
+domínio reverso para assegurar unicidade global. Exemplo: tenho um domínio https://igoroctaviano.com.br,
+meu nome de pacote junto a declaração será **br.com.igoroctaviano**, isso é apenas uma convenção pra não acontecer colisão de nomes. E ainda mais, nessa regra simples, vamos adicionar ainda mais qualificadores para garantir que o nome do pacote
+será único dentro de um grupo ou organização. COmo por exemplo: dentro da minha empresa posso ter um projeto
+chamado blog então a declaração junto ao nome do meu pacote vai ficar **package br.com.igoroctaviano.blog;**.
+
+Essa é a convenção mais simples que tem, mas se você tem uma organização grande, provavelmente isso não será suficiente.
+No caso de vários grupos de desenvolvedores, você pode adicionar a categoria dentro do nome do pacote: **package br.com.igoroctavaiano.contabilidade;** para todos os desenvolvedores do grupo de contabilidade. Neste caso, podemos
+criar projetos com o mesmo nome, não vai causar colisões devido ao grupo especificado, garantindo unicidade. São
+apenas convenções, nada está forçando ninguem a fazer nada aqui.
+
+### Membros se tornam parte do pacote
+Neste caso, temos uma classe chamada Main, mas uma vez que colocamos essa classe dentro de um pacote, 
+a classe já não é mais conhecida como Main, mas sim, como **com.fundamentosemjava.Main**. Agora ela
+tem um nome único, devido as nossas convenções.
+
+{% highlight java %}
+package com.fundamentosemjava.Main;
+
+public class Main {
+  public static void main(Strings[] args) {
+
+  }
+}
+{% endhighlight %}
+
+### Nomes de pacotes e estrutura dos arquivos fonte
+Nomes de pacotes afetam a estrutura dos arquivos fonte. O que é interessante, Java por sí, não exige
+correlação entre nome de pacotes e a estrutura de código fonte, Java não quer saber como você nomeou seus pacotes. 
+Porém! a maioria dos Ambientes Integrados de Desenvolvimento Java (IDEs) exigem uma sub pasta para cada parte
+do nome do pacote. A maoria das ferramentas que você vai utilizar para programar Java vai te exigir isso.
+
+{% highlight java %}
+package com.fundamentosemjava.Main;
+{% endhighlight %}
+
+Vai mapear para a seguinte estrutura de arquivos fonte:
+
+**src**
+   |--**com**
+      |--**fundamentosemjava**
+         |--**Main.java**
+         
+### Execução de aplicações fora das IDEs
+Podemos executar programas pela linha de comando com o comando *java* no nosso terminal.
+Você pode fazer isso, caminhando até a pasta onde está a classe candidata a execução e
+utilizar o comando *java* logo em seguida o nome da classe. Não se esqueça de colocar o nome completo da classe
+incluindo o nome do pacote em que ela pertence. *Quando em ambiente Windows, você precisa incluir
+o diretorio bin da JRE nas variaveis de ambiente.*
+
+### Statements (afirmações)!
+Em Java, programas são feitos de afirmações (algum código, como o exemplo do hello world) e essas afirmações possuem ou não declarações. Em Java, as afirmações terminam com ponto e virgula no final, coisa de sintaxe. Pra alguns conhecedores
+de outras linguagens que não exigem podem achar meio chato, mas é necessário no mundo Java.
 
 
 
