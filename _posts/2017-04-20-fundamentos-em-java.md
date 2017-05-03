@@ -25,10 +25,10 @@ estar se referindo a linguagem de programação ou o ambiente de execução ou o
 Geralmente, quando alguem fala de Java no contexto de ambiente de execução, eles
 estão se referindo ao Java SE ou Java Standard Edition (ambiente básico de Java),
 mas existem outros ambientes que se derivaram deste, como o Java EE (Java Enterprise Edition),
-Java ME (Java Micro Edition) e o [JavaFX](https://docs.oracle.com/javaf), todos eles sendo super conjuntos ou sub conjuntos
+Java ME (Java Micro Edition) e o [JavaFX](https://docs.oracle.com/javaf){:target="_blank"}, todos eles sendo super conjuntos ou sub conjuntos
 da versão standard (padrão). Java é tão flexível que existem ambientes de execução
-que não são amarrados ao Java produzido pela [Oracle](https://www.oracle.com/br/), 
-o exemplo mais conhecido é o [Android](https://www.google.com.br/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjpr9v4yb3TAhUGkJAKHR0iAFgQFgglMAA&url=https%3A%2F%2Fwww.android.com%2Fintl%2Fpt-BR_br%2F&usg=AFQjCNGLx65qg4JE5zi0juTlAnyY5oTvpQ&sig2=Kj9oy8F4Bs8x4LgI4UoCYg), 
+que não são amarrados ao Java produzido pela [Oracle](https://www.oracle.com/br/){:target="_blank"}, 
+o exemplo mais conhecido é o [Android](https://www.google.com.br/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjpr9v4yb3TAhUGkJAKHR0iAFgQFgglMAA&url=https%3A%2F%2Fwww.android.com%2Fintl%2Fpt-BR_br%2F&usg=AFQjCNGLx65qg4JE5zi0juTlAnyY5oTvpQ&sig2=Kj9oy8F4Bs8x4LgI4UoCYg){:target="_blank"}, 
 o Android produz produz um ambiente de execução bem diferente que a versão Standard da Oracle. 
 A coisa é que todos esses ambientes suportam efetivamente a mesma linguagem de programação, **Java!**.
 
@@ -40,17 +40,17 @@ são duas partes que precisamos para rodar e criar aplicações Java. JRE (Java 
 <!-- Adicionar imagem -->
 
 **Java Runtime Environment (JRE)**
-[x] Necessário para executar aplicações Java
-[x] Usuários finais normalmente só precisam do JRE
+- [x] Necessário para executar aplicações Java
+- [x] Usuários finais normalmente só precisam do JRE
 
 **Java Development Kit (JDK)**
-[x] Disponibiliza as ferramentas que precisamos para criar aplicativos Java
-[x] Geralmente desenvolvedores instalam a JDK em suas máquinas
-[x] A instalação da JDK já incluí a JRE
+- [x] Disponibiliza as ferramentas que precisamos para criar aplicativos Java
+- [x] Geralmente desenvolvedores instalam a JDK em suas máquinas
+- [x] A instalação da JDK já incluí a JRE
 
 De acordo com a documentação Java versão 8 SE, a JDK 8 é um superset (super conjunto) da JRE 8, a JDK contém tudo que existe dentro da JRE 8 mais compiladores e debuggers (debugadores existe no PT-BR? =D) necessarios para desenvolver applets e aplicações! Opera, perai, o que são Applets? Apples são pequenos programas que são feitos para serem embutidos ou embarcados dentro de aplicações. Em Java, a classe Applet deve ser uma superclasse de qualquer applet que deve ser embarcada em uma página web ou vista por um Java Applet Viewer (é um programa autônomo de linha de comando feito pela Sun para rodar os Java Applets, o Applet Viewer é geralmente usado por desenvolvedores para testar suas applets antes de realizarem o deploy delas para um website). A classe Applet fornece uma interface padrão entre os applets e seu ambiente.
 
-[Aqui](http://docs.oracle.com/javase/8/docs/) voce vai encontrar o diagrama conceitual de tudo isso e muito mais (todos os componentes menores que pertencem a JDK e a JRE). 
+[Aqui](http://docs.oracle.com/javase/8/docs/){:target="_blank"} voce vai encontrar o diagrama conceitual de tudo isso e muito mais (todos os componentes menores que pertencem a JDK e a JRE). 
 
 ## Criando e Executando aplicações Java
 Então como tudo isso funciona? Se nós sentarmos e digitarmos um arquivo fonte de Java
