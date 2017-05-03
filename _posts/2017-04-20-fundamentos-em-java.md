@@ -48,6 +48,10 @@ são duas partes que precisamos para rodar e criar aplicações Java. JRE (Java 
 [x] Geralmente desenvolvedores instalam a JDK em suas máquinas
 [x] A instalação da JDK já incluí a JRE
 
+De acordo com a documentação Java versão 8 SE, a JDK 8 é um superset (super conjunto) da JRE 8, a JDK contém tudo que existe dentro da JRE 8 mais compiladores e debuggers (debugadores existe no PT-BR? =D) necessarios para desenvolver applets e aplicações! Opera, perai, o que são Applets? Apples são pequenos programas que são feitos para serem embutidos ou embarcados dentro de aplicações. Em Java, a classe Applet deve ser uma superclasse de qualquer applet que deve ser embarcada em uma página web ou vista por um Java Applet Viewer (é um programa autônomo de linha de comando feito pela Sun para rodar os Java Applets, o Applet Viewer é geralmente usado por desenvolvedores para testar suas applets antes de realizarem o deploy delas para um website). A classe Applet fornece uma interface padrão entre os applets e seu ambiente.
+
+[Aqui](http://docs.oracle.com/javase/8/docs/) voce vai encontrar o diagrama conceitual de tudo isso e muito mais (todos os componentes menores que pertencem a JDK e a JRE). 
+
 ## Criando e Executando aplicações Java
 Então como tudo isso funciona? Se nós sentarmos e digitarmos um arquivo fonte de Java
 com o código de um programa que fizemos e queremos executar esse arquivo fonte em algum
