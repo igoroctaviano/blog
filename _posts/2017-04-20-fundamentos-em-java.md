@@ -160,6 +160,92 @@ O primeiro tipo de *Collection* que vamos encontrar é o tipo *List* (Lista), p
 
 É bem crítico para entender o design geral da API Collections, é a dessegregação entre uma interface e sua implementação. Uma **interface** pode ter várias implementações, várias estruturas de dados, elas defidem as caracteristicas funcionas, o comportamento (se uma coleção é acessada de forma indexada ou por meio da ordem). Interfaces geralmente tem implementações bem populares, muitas vezes você vai ver a interface *List* sendo usada e frequentemente a implementação *ArrayList* sendo usada. Já a **implementação**, cada uma é uma estrutura de dado diferente, como exemplo, a interface *List* possúi tanto a implementação *ArrayList* como a de *LinkedList* na biblioteca padrão e isso quer dizer que você pode trocar fácilmente entre diferentes implementações. Mas porque você iria querer coisa do tipo? devido as diferenças de performance, adicionar um elemento em uma *LinkedList* é mais performático que em um *ArrayList* devido ao fato que a *LinkedList* não tem que se expandir para adicionar um elemento como também você pode acessar algum ponto na coleção mais rapidamente com o *ArrayList* do que em uma *LinkedList* que é uma lista encadeada.
 
+## Bonus
+
+### String, StringBuffer e StringBuilder
+
+- Você deve usar *String* quando uma estrutura imutável é apropriada; obtendo uma nova sequência
+de caracteres de uma *String* talvez possa tomar um baque de performance não apropriado, tanto em tempo de CPU
+quanto de memória (obtendo substrings é eficiente em termos de CPU porque dados não são copiados, mas isso
+significa um potencial grande em termos de quantidade de dados em que talvez continuem alocados).
+
+- Você deve usar *StringBuilder* quando você precisa criar uma sequência de caracteres mutáveis, usualmente
+concatenando uma série de caracteres em sequência, juntos.
+
+- Você deve usar *StringBuffer* nas mesmas circunstâncias que você utilizaria *StringBuilder*, porém quando
+mudanças na string devem ser síncronas (porque vários threads estão lendo/modificando o buffer de string).
+
+**Diferença de Mutabilidade**
+
+*String* é imutável, se você quer alterar seus valores, outro objeto é criado enquanto *StringBuffer*
+e *StringBuilder* são mutáveis, então eles podem ter seus valores alterados. 
+
+**Diferença em Thread-Safety**
+
+A diferença entre *StringBuffer* e *StringBuilder* é que *StringBuffer* é thread-safe. Então quando a
+aplicação precisa rodar em apenas um thread, é melhor usar *StringBuilder*. *StringBuilder é mais eficiente
+que o *StringBuffer*.
+
+**Situações**
+
+- Se sua string não vai mudar, utilize a classe *String* porque objetos *String* são imutáveis.
+- Se sua string vai mudar (por exemplo: muitas operações e lógica na construção da string) e vai
+ser acessado apartir de um único thread, usar *StringBuilder* é bom o suficiente.
+- Se sua string vai mudar e vai ser acessada por vários threads, utilize *StringBuffer* porque *StringBuffer*
+é síncrono, sendo assim, você vai ter thead-safety.
+
+**Detalhes**
+
+Vale notar que *StringBuilder/Buffers* não são pura magia, eles apenas utilizam um Array como um objeto de apoio
+e que esse Array tem que ser realocado sempre quando se torna cheio. Tenha certeza e crie o seu objeto *StringBuilder/Buffer* grande o suficiente para que eles não tenham que estar constantemente sendo modificados
+de tamanho (isso é custoso) toda vez que o método *.append()* é chamado.
+
+A modificação do tamanho pode se tornar bem degenerativa. Basicamente modifica o tamanho desse Array the apoio para
+duas vezes o seu tamanho atual, toda vez que é necessário a expansão. Isso pode resultar em uma quantidade absurda
+de memoria RAM sendo alocada e não utilizada quando *StringBuilder/Buffer* começam a crescer demais.
+
+Em Java *String x = "A" + "B"; O que ocorre é que um *StringBuilder* é utlizado, escondido. Então, para casos simples assim, não há necessidade de declarar seu próprio *StringBuilder*. Mas... se você estiver construindo objetos *String* grandes (menos que 4k), declarar *StringBuilder sb = StringBuilder(4096);* é muito mais eficiente que concatenação ou usar o construtor padrão no qual é apenas 16 caracteres. Se sua *String* vai ser menor que 10k então inicialize-a com o construtor em 10k para garantir segurança. Mas se for igual a 10k, melhor escrever um caracter a mais que 10k, causando realocação e copia para um Array de tamanho 20k. De certa forma, inicializar com mais é melhor que com menos.
+
+No caso de auto modificação de tamanho, no décimo sétimo caracter (construtor padrão são apenas 16 caracteres), o Array de apoio vai ser realocado e copiado para 32 caracteres e no trigésimo terceiro isso vai ocorrer denovo e você vai ter uma realocação e copia para 64 caracteres. Você pode ver como isso degenera para várias realocações e cópias no qual você precisa evitar utilizando *StringBuilder/Buffer* no inicio.
+
+Esse é o código fonte retirado da JDK 6 para *AbstractStringBuilder*
+
+{% highlight java %}
+void expandCapacity(int minimumCapacity) {
+    int newCapacity = (value.length + 1) * 2;
+    if (newCapacity < 0) {
+        newCapacity = Integer.MAX_VALUE;
+    } else if (minimumCapacity > newCapacity) {
+        newCapacity = minimumCapacity;
+    }
+    value = Arrays.copyOf(value, newCapacity);
+}
+{% endhighlight %}
+
+A boa prática é inicializar o *StringBuilder/Buffer* um pouco maior do que você pensa que vai precisar, isso se você não tem uma ideia na hora, do tão grande a *String* vai ser. Uma alocação com um pouco mais de memória do que você precisa vai ser melhor que várias realocações e cópias.
+
+Também tome cuidade de inicializar um *StringBuilder/Buffer* com uma *String*, porque vai acontecer de ser alocado o tamanho da *String* + 16 caracteres, no qual na maioria dos casos, vai apenas fazer com que o ciclo de realocação e cópia seja degenerado, coisa que você quer evitar.
+
+Esse código é foi diretamente tirado como exemplo do código fonte do Java 6
+
+{% highlight java %}
+public StringBuilder(String str) {
+    super(str.length() + 16);
+    append(str);
+}
+{% endhighlight %}
+
+Se porque alguma razão, você acabar ficando com uma instância de *StringBuilder/Buffer* que você não criou e
+não pode controlar o construtor que é chamado, tem uma forma de evitar comportamentos degenerados com realocações e cópias. Chame o método *.ensureCapacity()* com o tamanho que você quer para assegurar que sua *String* resultante caiba.
+
+*As alternativas*
+
+Só pra constar, se você está fazendo bastante manipulação e construção de *String*, tem muitas outras melhores alternativas em questão de performance. Por exemplo, se você pode criar uma implementação de *StringList* herdando *ArrayList<String>* e adicionando contadores para rastrear o numero de caracteres em cada *.append()* e outras operações de mutação da lista, e então fazer um override (sobrescrita) do método *.toString()* para criar um *StringBuilder* do mesmo tamanho que você precisa e fazer um loop pela lista, construindo a saída, você pode até mesmo fazer o *StringBuilder* uma instância e 'cachiar' os resultados do *.toString()* e apenas ter que regenerar ela quando mudanças ocorrerem.
+
+Não se esqueça sobre *String.format()* quando construindo saídas fixas e formatadas, no qual pode ser otimizado pelo compilador assim que eles o fazem cada vez melhor.
+
+<sub>More [here.](http://stackoverflow.com/questions/2971315/string-stringbuffer-and-stringbuilder)</sub>
+
 
 
 
