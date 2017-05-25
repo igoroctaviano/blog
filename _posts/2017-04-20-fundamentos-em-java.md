@@ -246,7 +246,83 @@ Não se esqueça sobre *String.format()* quando construindo saídas fixas e form
 
 <sub>More [here.](http://stackoverflow.com/questions/2971315/string-stringbuffer-and-stringbuilder)</sub>
 
+## Questões de Entrevista
 
+### Básico
+
+1. Qual a diferença entre JDK e JRE?
+Bom, JDK significa Java Development Kit. O JDK contém as ferramentas e bibliotécas para o desenvolvimento
+de aplicações Java. Ele também contém compiladores de ferramentas de debug necessários para compilar um programa Java.
+Porém JRE significa Java Runtime Environment. E este é incluso na JDK. O JRE provê bibliotécas e a maquina virtual Java (JVM)
+que é necessária para rodar um programa Java.
+
+2. O que é a JVM?
+A Java Virtual Machine ou máquina virtual Java, é uma máquina abstrata que execute bytecode Java. Existe uma JVM diferente
+ para cada hardware ou software diferente. Dessa forma, a JVM depende de plataforma. Ela é responsável por carregar, verificar
+  e executar bytecode Java em uma plataforma.
+
+3. Quais os diferentes tipos de áreas de memória alocadas pela JVM?
+Em Java a JVM aloca memória para diferentes processos, métodos e objetos. Algumas áreas alocadas pela JVM são:
+- ClassLoader: Componente da JVM usado para carregar os arquivos de classes.
+- Class (Method) Area: Armazena estruturas por classe como a Runtime Constant Pool (pool de tempo de execução constante), dados dos campos e métodos e
+código dos métodos.
+- Heap: A Heap é criada em runtime (tempo de execução) e contém a área de dados runtime no qual objetos são alocados.
+- Stack: A Stack guarda variáveis locais e resultados parciais em tempo de execução. Ela também ajuda no invocamento de métodos e retorno de valor.
+Cada thread cria uma stack da JVM no tempo de criação da thread.
+- Program Counter Register (): Essa área de memória contém o endereço da instrução da JVM que está sendo executada.
+- Native Method Stack (Pilha de Método Nativo): Essa área é reservada para todos os métodos nativos usados na aplicação.
+
+4. O que é compilador JIT?
+Just In Time Compiler também conhecido como JIT compiler é utilizado para a melhora de performance em Java. É
+ativado por default. Sua compilação é feita em tempo de execução. Java popularizou a utilização do JIT incluindo-o na JVM.
+
+5. Como a plataforma Java se difere de outras plataformas?
+6. Porque pessoas falam que Java é uma linguagem que você 'escreve uma vez e roda em qualquer lugar'?
+7. Como ClassLoader funciona em Java?
+8. Você acha que *main* (utilizado para o método main) seja uma keyword em Java?
+9. Podemos escrever o método *main* como *public void static* ao contrário de *public static void*?
+10. Em java, se você não especificar qualquer valor para variaveis locais, qual vai ser o valor default dessas variaveis locais?
+11. Vamos dizer que você executou uma class Java sem passar nenhum argumento. Qual o valor do array de String no método Main?
+12. Qual a diferença entre os tipos de dados *byte* e *char* em Java?
+13. Quais são os princípios mais importântes de Programação Orientada a Objetos?
+14. Qual a diferença entre uma Linguagem de Programação Orientada a Objetos e uma Linguagem de Programação Baseada em Objetos?
+15. Em Java, qual é o valor default de uma referência de objeto definido como uma instância de um *Object*?
+16. Por que precisamos de construtor em Java?
+17. Porque precisamos de construtor default em Java?
+18. Qual é o valor retornado pelo construtor Java?
+19. Podemos herdar de um construtor?
+20. Porque construtores não podem ser *final*, *static* ou *abstract* em Java?
+21. Qual o propósito da palavra-chave *this* em Java?
+22. Herança
+23. Qual classe em Java é super classe de todas as outras?
+24. Por que Java não suporta herança multipla?
+25. Em OOP, o que significa composição?
+26. Como agregação e composição se diferem?
+27. Por que não há ponteiros em Java?
+28. Se não há ponteiros em Java, porque recebemos NullPointerException?
+29. Qual o propósito da palavra-chave *super* em Java?
+30. É possivel usar ambos *this()* e *super()* no mesmo construtor?
+31. Qual o significado de clonagem de objetos (object cloning) em Java?
+32. Em java, porque usamos variáveis *static*?
+33. Porque não é uma boa prática criar variáveis estáticas (*static*) em Java?
+34. Qual o propósito de métodos estáticos (*static*) em Java?
+35. Porque marcamos o método *main* como estático (*static*) em Java?
+36. Em qual cenário nos utilizamos um bloco estático?
+37. É possível executar um programa sem definir um método *main*?
+38. O que acontece quando o modificador *static* não é mencionado na assinatura do método *main*?
+39. Qual a diferença entre um método estático *static* e um método de instância.
+40. Qual é o outro nome de Method Overloading (sobrecarga de método)?
+41. Como você vai implementar sobrecarga de método em Java?
+42. Quais tipos de variações de argumentos são permitidos em sobregarga de método?
+43. Porque não é possivel fazer sobrecarga de método mudando o tipo de retorno do método em Java?
+44. É permitido sobrecarregar o método *main()* em Java?
+45. Como se implementa sobrescrita (Overriding) de método em Java?
+46. É permitido sobrescrever um método estático *static* em Java?
+47. Porque Java não permite sobrescrita de um método estático?
+48. É permitido sobrescrever um método sobrecarregado?
+49. Qual a diferença entre sobrecarga de método e sobrescrita de método em Java?
+50. Java permite funções virtuais?
+51. O que quer dizer tipo de retorno covariante em Java?
 
 
 
