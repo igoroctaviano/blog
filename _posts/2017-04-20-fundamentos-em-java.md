@@ -529,13 +529,125 @@ public void andar(Object o) {
 
 {% endhighlight %}
 
+#### O que é uma classe abstrata em Java?
 
+Uma classe abstrata *abstract* em Java possui um ou mais métodos abstratos. Um método abstrato
+é declarado apenas em uma classe abstrata e não implementado. Uma classe abstrata tem que ser extendida em Java
+e seus métodos abstrados devem ser implementados pelas classes que a extende. Também, Java não permite criar novas
+instâncias de uma classe abstrata.
 
+#### É permitido marcar um método como *abstract* mesmo que a classe não seja abstrata? 
 
+Não. Na especificação Java, é dito que se existe pelo menos um método abstrato em uma classe, a classe deve ser
+definida como *abstract*.
 
+#### É possível definir um método abstrato como sendo *final*?
 
+Não. Seria contraditório marcar um método abstrato sendo final. Um método abstrato não pode ser sobrescrito por uma classe filha pois o mesmo deve ser implementado por ela, não fazendo sentido a sua sobrescrita. Dessa forma, um método pode ser abstrato ou final em Java.
 
+#### O que é uma interface em Java?
 
+Uma interface em Java é o contrato de uma classe. A interface contém os métodos que a classe deve implementar. É um tipo de protocolo. A interface possui as assinaturas dos métodos e as declarações de constantes.
+
+#### É possível marcar um método de uma interface sendo *static*?
+
+Sim, de Java 8 para frente podemos definir métodos estáticos e métodos padrões em uma interface. Antes de Java 8 isso não era possível.
+
+#### Porque uma interface não pode ter métodos definidos como *final* em Java?
+
+Um método *final* não pode ser sobrescrito. Mas um método de uma interface tem que ser implementado por outra classe. Dessa forma, um método não pode ser definido como *final*.
+
+#### O que é o Marcador de Interface?
+
+Existem interfaces que não possui nenhum membro ou método. Esse tipo de interface é chamado Marcador de Interface. Exemplos: Serializable, Cloneable, Remote etc. Em versões anteriores Java, Marcador de Interface era a unica forma de se declarar metadados sobre uma classe. Por exemplo, o Marcador de Interface Serializable permite ao autor de uma classe dizer que sua classe vai se comportar corretamente quando serializada ou deserializada.
+
+No Java moderno, Marcadores de Interface não possuem mais lugar. Eles podem ser completamente substituidos por Anotações ou *Annotations* no qual permite uma forma bem flexivel quanto a definição dos metadados de uma classe. Se você tem alguma informação sobre uma classe que é importânte declarar e essa informação não vai ficar mudando, então Annotations é uma forma bem útil para representa-la.
+
+#### Annotations é melhor que Marcador de Interface?
+
+Annotations servem o propósito de conceber metadados sobre uma classe para seus consumidores sem criar um tipo separado para isso. Annotations é uma forma mais poderosa do que Marcadores de Interface. Annotatins permitem aos programadores a passar mais informações mais sofisticadas para classes que as consome.
+
+#### Qual a diferença entre uma classe abstrata e uma interface em Java?
+
+1. Uma classe abstrata pode ter métodos implementados em seu corpo (métodos não abstratos). As interfaces possuem apenas métodos abstratos (assinaturas). De Java 8 adiante, interface pode ter métodos padrões e estáticos implementados.
+2. Uma classe abstrata pode ter variaveis (membros). Uma interface não pode ter variaveis de instância, apenas constantes.
+3. Uma classe abstrata deve ter um construtor. A interface não tem construtor, o construtor deve ser implementado por outra classe.
+4. Uma classe pode extender de apenas uma única classe abstrata enquanto que classes podem implementar mais de uma interface.
+
+#### Java permite o uso de modificadores *private* e *protected* para variaveis em uma interface?
+
+Não. Todas as variaveis em uma interface devem ser implicitamente publicas.
+
+#### Como podemos fazer o *cast* de um objeto para uma interface?
+
+Um objeto que implementa uma interface pode ser moldado (ser feito o cast) para a mesma interface. Desde que um objeto que implementa uma interface já provê implementação dos métodos daquela interface, lhe é permitido ser alvo de um cast para essa interface pelas regras de herança.
+
+Cast em Java não é mágica. Você está dizendo ao compilador que um objeto do tipo A é na verdade um tipo mais específico de um tipo B, dai ele ganha acesso a todos os métodos de B que o mesmo não teria se não tivesse feito o Cast. Você não está fazendo nenhum tipo de magia negra quando você faz essa conversão, essencialmente você está dizendo ao compilador "Confie em mim, eu sei o que estou fazendo e eu posso garantir pra você que esse objeto nessa linha é de um tipo X.
+
+### Final
+
+#### Como voce pode mudar o valor de uma variavel *final* em Java?
+
+Java não permite a alteração de variáveis *final*. Uma vez que o valor é atribuido, não se pode alterar.
+
+#### Uma classe pode ser definida como *final* em Java?
+
+Sim, quando a classe é definida como *final* em Java, ninguem pode extende-la.
+
+#### Como podemos criar um método *final* em Java?
+
+Para marcar um método como *final* em Java, adicione o modificador para aquele método. Um método *final* não pode ser sobrescrito por uma classe filha. Você pode proibir a herança de uma classe a definindo como *final*.
+
+#### Porque a classe Integer é definida como *final* em Java?
+
+A classe Integer é um container para *int*. Se ela não for marcada como *final*, qualquer outra classe pode extende-la e modificar o comportamento das operações de Integer ou Inteiros. Para evitar tal situação a classe que envolve os inteiros primitivos *int* é marcada como *final*.
+
+#### O que é uma variavel *final* em branco em Java? 
+
+Quando declaramos uma variavel *final* sem dar a essa variavel algum valor inicial, então é chamada variavel *final* em branco.
+
+#### Como podemos inicializar uma variavel *final* em branco?
+
+1. Uma instância *final* em branco pode ser inicializada em um construtor.
+2. Uma variavel *final* estática pode ser inicializada em um bloco estático de classe.
+
+#### É permitido decladar o método *main* como *final*?
+
+Sim, podemos marcar o método *main* como *final*.
+
+### Pacotes
+
+#### Qual o propósito de pacotes em Java?
+
+Um pacote é usado para encapsular um grupo de classes, interfaces e sub-pacotes. Frequentemente é uma estrutura hierarquica de armazenar informação. É mais fácil organizar classes relacionadas e sub-pacotes dessa forma. Um pacote também provê proteção de acesso para classes e interfaces. Um pacote também ajuda a remover a problemática da colisão de nomes.
+
+#### O que é o pacote *java.lang*?
+
+Em Java, o pacote *java.lang* contem as classes que são fundamentais para o design da linguagem de programação Java. A classe mais importante neste pacote é a classe *Object*. Este pacote também classes que servem o propósito de empacotar tipos primitivos como Integer, Boolean, Character entre outros. Também este pacote provê a classe Math para operações matemáticas.
+
+#### Quais são as classes mais importântes em Java?
+
+Essa é uma pergunta com várias respostas. Em uma perspectiva, a classe *Object* é a classe mais importânte para linguagem de programação Java. É a raiz de todas as classes em Java. Ela provê métodos importântes e fundamentais.
+
+#### É obrigatório importar o pacote *java.lang* toda vez?
+
+Não. Por padrão a JVM vai carregar este pacote internamente.
+
+#### Você pode importar o mesmo pacote ou classe duas vezes em sua classe?
+
+Se você importar o mesmo pacote mútiplas vezes em uma classe o compilador vai incluir apenas uma vez. Dessa forma mesmo a JVM quanto o compilador não lhe vai produzir nenhum tipo de erro ou aviso por incluir estes pacotes mútilas vezes. Se você tem duas classes com o mesmo nome, então talvez você sofra de colisão de nome. A JVM carrega (internamente) essa classe apenas uma vez.
+
+#### O que é uma importação estática em Java?
+
+Importação estática em Java é similar a declaração normal de importação. A importação normal nos permite importar classes de um pacote sem usar qualificador de pacote. A importação estática nos permite importar membros estáticos de uma classe sem usar o qualificador da classe.
+
+#### Qual a diferença entre *import static com.test.Testeclass* e *import com.test.Testclass*?
+
+A primeira importação é estática e a segunda é uma importação normal de uma classe. A primeira nos permite importar membros estáticos de uma classe.
+
+### Internacionalização
+
+### Serialização
 
 
 
