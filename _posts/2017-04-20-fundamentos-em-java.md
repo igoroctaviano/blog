@@ -647,18 +647,43 @@ A primeira importação é estática e a segunda é uma importação normal de u
 
 ### Internacionalização
 
+#### O que é *Locale* em Java?
+
+Um objeto *Locale* em Java representa uma região geográfica, política ou cultural. É usado para operações sensitivas a localização em Java. *Locale* ajuda no cumprimento de convenções de um páis ou região. Essas convenções podem ser para formatação de datas, dinheiro ou números etc.
+
+#### Como você pode usar um *Locale* específico em Java?
+
+Para usar um *Locale* específico em Java, precisamos carregar este *Locale*. Podemos usar o método *ResourceBundle.getBundle("Locale.UK")* para carregar o *Locale* britânico por exemplo.
+
 ### Serialização
 
+#### O que é a Serialização?
 
+Serialização é o processo de converter um objeto em um array de bytes. Esse array de bytes representa a classe, versão e o estado interno do objeto. A JVM pode usar esse array de bytes para transmitir ou ler o objeto por uma rede.
 
+#### Qual o propósito da Serialização?
 
+1. Comunicação: É utilizada para transmitir um objeto entre duas máquinas em rede.
+2. Persistência: Podemos guardar o estado de um objeto em um banco de dados e recolher depois.
+3. Caching: Serialização pode ser usada para fazer o caching para melhorar a performance. Podemos precisar de 10 minutos para construir um objeto, porém vai levar 10 segundos para desserializar o objeto.
+4. Sincronização entre JVM: Pode usar usado da mesma forma entre JVMs que seguem uma arquitetura diferente.
 
+#### O que é Desserialização?
 
+Desserialização é o processo de reconstruir o objeto de um estado serializado. É o processo inverso de Serialização.
 
+#### O que é Serialização e Desserialização conceitualmente?
 
+Serialização é para converter dados *Object* em um fluxo de bytes. Desserialização é a conversão desse fluxo de bytes de volta para uma copia de um *Object* original.
 
+#### Porque marcados um membro como *transient*?
 
+Variaveis de um objeto são marcados como *transient* para indicar que esses membros não devem ser serializados. Durante o processo de serialização as variaveis do tipo *transient* não são consideradas parte do estado persistente de um objeto.
 
+#### É permitido marcar um método como *transient*?
 
+Não. Java não vai permitir marcar um método como *transient*. A palavra-chave *transient* é valida apenas para variaveis.
 
+#### Como que marcar um campo como *transient* torna possivel a serialização de um objeto?
 
+Vamos dizer que uma classe ABC que implementa a interface *Serializable* mas contem membros de objeto de uma classe XYZ que não implementam a interface *Serializable*. Devido a este motivo, não é possivel serializar a classe ABC. Para resolver este problema, podemos marcar os membros XYZ como *transient* na classe ABC. Isso nos vai permitir a serialização de ABC. 
