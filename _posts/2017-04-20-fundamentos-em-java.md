@@ -687,3 +687,19 @@ Não. Java não vai permitir marcar um método como *transient*. A palavra-chave
 #### Como que marcar um campo como *transient* torna possivel a serialização de um objeto?
 
 Vamos dizer que uma classe ABC que implementa a interface *Serializable* mas contem membros de objeto de uma classe XYZ que não implementam a interface *Serializable*. Devido a este motivo, não é possivel serializar a classe ABC. Para resolver este problema, podemos marcar os membros XYZ como *transient* na classe ABC. Isso nos vai permitir a serialização de ABC. 
+
+#### O que é a interface *Externalizable* em Java?
+
+A interface *Externalizable* extende *Serializable* em Java. É utilizada para dar controle a classe em salvar e resgatar conteúdo de suas instâncias. A classe implementa os métodos *whiteExternal()* e *readExternal()* para guardar e resgatar o objeto.
+
+#### Qual a diferença entre as interfaces *Serializable* e *Externalizable*?
+
+*Serializable* é um Marcador de Interface equanto *Externalizable* não é. Quando implementamos a interface *Serializable*, a classe é serializada automaticamente por padrão. Podemos sobrescrever os métodos *whiteObject()* e *readObject()* para controlar mais processos de serialização complexa de objetos.
+
+No caso do *Exernalizable*, usamos o método *readExternal()* e *writeExternal()* para oferecer mais controle para classe visando o processo de serialização.
+
+A interface *Serializable* é baseada em algoritmo recursivo e lhe da duas opções. Uma é providenciar uma maneira customizada de serialização e a outra a maneira padrão. Em *Externalizable* você tem que implementar os métodos *readExternal()* e *writeExternal* sempre.
+
+Um construtor sem argumentos publico é necessário quando você usa a interface *Externalizable*.
+
+Em serialização, precisamos definir o *serialVersionUID*. Se não estiver explicitamente definido, ele sera gerado automaticamente baseado em todos em campos e métodos da classe.
