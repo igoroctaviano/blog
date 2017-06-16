@@ -703,3 +703,70 @@ A interface *Serializable* é baseada em algoritmo recursivo e lhe da duas opç�
 Um construtor sem argumentos publico é necessário quando você usa a interface *Externalizable*.
 
 Em serialização, precisamos definir o *serialVersionUID*. Se não estiver explicitamente definido, ele sera gerado automaticamente baseado em todos em campos e métodos da classe.
+
+### Garbage Collection (Coletor de Lixo)
+
+#### O que é Garbage Collection em Java?
+
+Java tem um mecanismo chamado Garbage Collection para retomar memória não utilizada em tempo de execução. Garbage Collection também é conhecido como gerência automática de memória.
+
+#### Porque Java disponibilize o Garbage Collection?
+
+Em Java não se tem ponteiros. Gerência e alocação de memória é feita pela JVM. Desde que a alocação de memória é feita automaticamente, depois de um certo tempo a JVM talves venha ter falta de memória. Quando isso ocorre, a JVM tem que liberar memória de objetos que não estão sendo utilizados. Para ajudar nom processo de recuperação de memória, Java dispõe de um processo automático chamado Garbage Collector.
+
+
+#### Qual o propósito do método *gc()* em Java?
+
+Java fornece dois métodos *System.gc()* e *Runtime.gc()* para requisitar a JVM que rode o Garbage Collection. Usando esses métodos, programadores podem explicitamente enviar requisições de Garbage Collection. Mas o processo da JVM pode rejeitar essa requisição e aguardar por um certo tempo antes de rodar o coletor de lixo.
+
+#### Como o Garbage Collection funciona em Java?
+
+Java tem um processo automático chamado Garbage Collector para gerência de memória. É um daemon na JVM que monitora o uso de memória e faz limpeza da mesma. Uma vez que a JVM está com falta de memória, o processo GC encontra objetos que não estão sendo referenciados em lugar nenhum (inutilizados) e os limpa da memória.
+
+#### Quando um objeto é elegido para Garbage Collection em Java?
+
+Um objeto pode ser coletado pela JVM por meio do Coletor de Lixo se ele não é acessável. Existem dois casos no qual um objeto pode ser elegido para Garbage Collection:
+
+1. Uma instância de um objeto não pode ser acessada por uma thread viva.
+2. Um conjunto de instâncias com referências circulares não podem ser alcançadas por nenhuma outra instância fora do conjunto.
+
+#### Por que utilizamos um método *finalize()* em Java?
+
+Java disponibiliza o método *finalize()* para fazer qualquer limpeza antes do Garbage Collection. Esse método está na classe *Object* e é chamado pela JVM internamente. Desenvolvedores estão livres para implementar esse método para qualquer tipo de limpeza customizada no caso de Garbage Collection. 
+
+Se um *Object* não é coletado pelo Garbage Collector, então esse método não vai ser chamado. Esse método nunca é chamado mais de uma vez pela JVM.
+
+#### Quais são os diferentes tipos de referências em Java?
+
+Em Java existem quatro tipos de referências:
+
+1. Forte
+2. Macia
+3. Fraca
+4. Fantasma
+
+#### Como podemos referênciar um objeto desreferênciado novamente?
+
+Podemos provêr implementação no método *finalize()* para referênciar e desreferênciar objeto. Para objetos desreferênciados, *finalize()* vai ser chamado no tempo de Garbage Collection. Nesse tempo, o objeto passa sua referência *this* para o método *finalize()* e se revive.
+
+#### Qual tipo de processo é o thread de Garbage Collection?
+
+Garbage Collection é um processo do tipo Daemon (Daemon é tipo de processo que fica rodando no background e que lida com requisições para serviços como spooling de impressão e transferência de arquivos, ele dorme quando não está sendo requisitado) dentro da JVM. É um processo interno que fica verificando o uso de memória e que a limpa quando necessário.
+
+#### Qual o propósito da classe *Runtime*?
+
+O propósito da classe *Runtime* é disponibilizar acesso para o sistema de tempo de execução em Java. Essa classe disponibiliza métodos importântes como:
+
+1. *Runtime.freeMemory()* - esse método retornar o valor livre de memória na JVM.
+2. *Runtime.maxMemory()* - esse método retorna o valor livre máximo de memória que a JVM pode utilizar.
+3. *Runtime.gc()* - Esse método pode ser chamado para invocar o Garbage Colleciton.
+
+#### Como podemos invocar um processo externo em Java?
+
+Java disponibiliza o método *Runtime.getRuntime().exec()* para invocar um processo externo da JVM.
+
+#### Quais são os usos da classe *Runtime*?
+
+1. Lhe permite ler dados dos teclado
+2. Lhe permite usar propriedades do sistema e variáveis de ambiente
+3. Lhe ajuda a rodar programas que não são Java dentro de uma aplicação Java
