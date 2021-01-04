@@ -15,11 +15,11 @@ introduction: "Os delegates: um dos poucos aspectos exclusivos do .NET. Como ele
 
 Visando usar o delegate *Operation*, nós vamos precisar de alguns métodos que correspondem a forma *double (double, double)*.
 
-{% highlight cs %}
+```cs
 private delegate double Operation(double a, double b);
 ```
 
-{% highlight cs %}
+```cs
 public static double Add(double a, double b)
 {
    return a + b;
