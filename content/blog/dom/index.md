@@ -52,7 +52,7 @@ Imagine que você tem um elemento vazio em seu HTML:
 ```
 
 Então depois em seu HTML, tem um pouco de JavaScript:
-{% highlight js %}
+```js
 <script>
   var container = document.getElementById("container");
   container.innerHTML = "Novo conteúdo!";
