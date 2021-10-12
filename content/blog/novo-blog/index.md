@@ -4,8 +4,10 @@ date: "2020-12-28T22:40:32.169Z"
 description: Migrando para Gatbsy em busca do minimalismo.
 ---
 
-Hoje decidi migrar para o blog para Gatsby! Agora o blog esta na vibe do minimalismo e de bonus ficou mais performático.
+Bem-vindo!
 
-Agora o foco é puramente o conteúdo!
+Decidi migrar o blog para Gatsby em prol do minimalismo.
 
-*Tenho planos para voltar a publicar ano que vem :)*
+Afinal o foco é o conteúdo, certo?
+
+*Tenho planos para voltar a publicar em breve :)*
