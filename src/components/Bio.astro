@@ -1,0 +1,30 @@
+---
+const siteUrl = "https://igoroctaviano.com";
+---
+
+<aside class="bio">
+  <img
+    src={`${import.meta.env.BASE_URL}img/profile-pic.jpg`}
+    alt="Foto de Igor Octaviano"
+    width="56"
+    height="56"
+    loading="lazy"
+    decoding="async"
+  />
+  <div>
+    <p>
+      <strong>Igor Octaviano</strong><br />
+      Engenheiro de software e consultor em imagens médicas, baseado em Belo
+      Horizonte, Brasil.
+    </p>
+    <p class="bio-links">
+      <a href={siteUrl}>Site</a>
+      <a href="https://github.com/igoroctaviano" rel="noopener noreferrer"
+        >GitHub</a
+      >
+      <a href="https://medium.com/@igoroctaviano" rel="noopener noreferrer"
+        >Medium</a
+      >
+    </p>
+  </div>
+</aside>

@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Bio from "../components/Bio.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString("pt-BR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<BaseLayout
+  title="Blog"
+  description="Artigos sobre desenvolvimento de software, Java, C# e conceitos de programação."
+  isHome
+>
+  <Bio />
+
+  {
+    posts.length === 0 ? (
+      <p>Nenhum artigo publicado ainda.</p>
+    ) : (
+      <ol class="post-list">
+        {posts.map((post) => (
+          <li>
+            <article>
+              <header>
+                <h2>
+                  <a href={`${import.meta.env.BASE_URL}${post.id}/`}>
+                    {post.data.title}
+                  </a>
+                </h2>
+                <time datetime={post.data.date.toISOString()}>
+                  {formatDate(post.data.date)}
+                </time>
+              </header>
+              <p>{post.data.description}</p>
+            </article>
+          </li>
+        ))}
+      </ol>
+    )
+  }
+</BaseLayout>

@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+.astro/
+
+# Environment
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+*.log
+
+# Legacy Gatsby (no longer used)
+.cache/
+public/sw.js

@@ -1,0 +1,10 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Página não encontrada" description="A página solicitada não existe.">
+  <h1>Página não encontrada</h1>
+  <p>
+    <a href={import.meta.env.BASE_URL}>Voltar ao blog</a>
+  </p>
+</BaseLayout>

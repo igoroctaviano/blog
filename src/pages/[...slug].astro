@@ -1,0 +1,75 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Bio from "../components/Bio.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf(),
+);
+
+const currentIndex = allPosts.findIndex((p) => p.id === post.id);
+const previous = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+const next =
+  currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString("pt-BR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="post">
+    <header class="post-header">
+      <h1>{post.data.title}</h1>
+      <time datetime={post.data.date.toISOString()}>
+        {formatDate(post.data.date)}
+      </time>
+    </header>
+
+    <div class="post-content">
+      <Content />
+    </div>
+
+    <hr />
+
+    <Bio />
+  </article>
+
+  <nav class="post-nav" aria-label="Navegação entre artigos">
+    <ul>
+      <li>
+        {
+          previous && (
+            <a href={`${import.meta.env.BASE_URL}${previous.id}/`}>
+              ← {previous.data.title}
+            </a>
+          )
+        }
+      </li>
+      <li>
+        {
+          next && (
+            <a href={`${import.meta.env.BASE_URL}${next.id}/`}>
+              {next.data.title} →
+            </a>
+          )
+        }
+      </li>
+    </ul>
+  </nav>
+</BaseLayout>

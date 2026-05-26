@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://igoroctaviano.com/blog/sitemap-index.xml
