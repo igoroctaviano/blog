@@ -23,8 +23,15 @@ A saída fica em `dist/`. Para pré-visualizar:
 npm run preview
 ```
 
-## Deploy
+## Deploy (GitHub Pages)
 
-O site usa `base: /blog`. Publique o conteúdo de `dist/` no caminho `/blog` do seu hosting (por exemplo, GitHub Pages com `pathPrefix` ou pasta `blog` no repositório do site principal).
+Este repositório usa **Astro**, não Jekyll. No GitHub:
+
+1. **Settings → Pages → Build and deployment**
+2. Set **Source** to **GitHub Actions** (not “Deploy from a branch” — that runs Jekyll and will fail on `.astro` files).
+
+Pushes to `master`/`main` run `.github/workflows/deploy.yml`, which runs `npm run build` and publishes `dist/`.
+
+O site usa `base: /blog`. Para outro hosting, publique o conteúdo de `dist/` no caminho `/blog`.
 
 Artigos ficam em `src/content/blog/` como arquivos Markdown com frontmatter `title`, `description` e `date`.
