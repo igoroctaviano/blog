@@ -71,5 +71,49 @@ const metaDescription =
     <footer class="site-footer">
       © {new Date().getFullYear()} Igor Octaviano
     </footer>
+    <script is:inline>
+      (() => {
+        if (typeof window === "undefined") return;
+        const basePath = new URL(import.meta.env.BASE_URL, window.location.origin).pathname;
+
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.getRegistrations().then((registrations) => {
+            registrations.forEach((registration) => {
+              const workerScript =
+                registration.active?.scriptURL ??
+                registration.waiting?.scriptURL ??
+                registration.installing?.scriptURL ??
+                "";
+
+              const hasBlogScope = registration.scope.includes(basePath);
+              const isLegacyBlogWorker =
+                workerScript.includes("/sw.js") ||
+                workerScript.includes("gatsby") ||
+                workerScript.includes("workbox");
+
+              if (hasBlogScope || isLegacyBlogWorker) {
+                registration.unregister();
+              }
+            });
+          });
+        }
+
+        if ("caches" in window) {
+          caches.keys().then((cacheNames) => {
+            cacheNames.forEach((cacheName) => {
+              const isLegacyCache =
+                cacheName.includes("gatsby") ||
+                cacheName.includes("workbox") ||
+                cacheName.includes("sw-precache");
+              const isBlogCache = cacheName.includes("blog");
+
+              if (isLegacyCache || isBlogCache) {
+                caches.delete(cacheName);
+              }
+            });
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
