@@ -15,4 +15,3 @@ dist/
 
 # Legacy Gatsby (no longer used)
 .cache/
-public/sw.js
